@@ -92,7 +92,7 @@ const App = () => {
         <span style={{ color: "white" }}>countries</span>
         <h2 style={{ textDecorationLine: 'underline' }}>Favorite countries</h2>
         <h5>Click on flag to remove from favorites.</h5>
-        <ul className="listOfCountries">
+        <ul className="listOfFavorites">
           {/* {console.log(favorites.sort((a, b) => a.name.common.localeCompare(b.name.common)))} */}
           {favorites.sort((a, b) => a.name.common.localeCompare(b.name.common)).map((favorite) => (
             <li key={favorite.name.common} className="country">

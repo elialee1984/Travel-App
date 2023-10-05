@@ -5,15 +5,27 @@
   text-align: center;
 }
 
+.listOfFavorites {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  flex-wrap: wrap;
+  max-height: 260px;
+  overflow-y: scroll
+  /* overflow: hidden; */
+  /* white-space: nowrap; */
+}
+
 .listOfCountries {
   display: flex;
   align-items: center;
   list-style-type: none;
   flex-wrap: wrap;
+  max-height: 500px;
+  overflow-y: scroll
   /* overflow: hidden; */
   /* white-space: nowrap; */
 }
-
 .country {
   position: relative;
   padding: 10px;
