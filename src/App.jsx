@@ -1,4 +1,5 @@
 import { useState, useEffect, useLayoutEffect, useRef } from 'react'
+import { Link } from "react-router-dom";
 import './App.css'
 
 const App = () => {
@@ -85,12 +86,12 @@ const App = () => {
 
         {/* <div className="second"> */}
         {/* <div ref={div} className="inside"> */}
-        {/* style = {"font-weight": "bold"} */}
+        {/* style = {"fontWeight": "bold"} */}
         <h1>Elia's Travel App</h1>
         <span>Includes all independent & </span>
         <span style={{ color: "orange" }}>non-independent </span>
         <span> countries </span>
-        <span style={{ fontWeight: "bold" }}>(hover over flag to view capital)</span>
+        <span style={{ fontWeight: "bold" }}>(hover over flag to view official name, capital, languages, currencies, and see location on Google Maps)</span>
         {favorites.length > 0 && (
           <div>
             <h2 style={{ textDecorationLine: 'underline' }}>Favorite countries</h2>
@@ -108,13 +109,30 @@ const App = () => {
                     <div className={favorite.independent ? "countryNameIndependent" : "countryNameDependent"}>{favorite.name.common}</div>
                     {hoveredCountry === favorite && (
                       <div className="tooltip">
-                        <div>Official name: {hoveredCountry.name.official}</div>
-                        <div>Capital: {hoveredCountry.capital ? hoveredCountry.capital : 'none'}</div>
-                        <ul>
-                        {Object.keys(hoveredCountry.languages).map((languageCode) => (
-                          <li key={languageCode}>{hoveredCountry.languages[languageCode]}</li>
-                        ))}
-                      </ul>
+                        <div style={{ "fontWeight": "bold" }}>Official name:</div>
+                        <ul style={{ "textIndent": "-30px" }}>{hoveredCountry.name.official}
+                        </ul>
+                        <div style={{ "fontWeight": "bold" }}>Capital:</div>
+                        <ul style={{ "textIndent": "-30px" }}>
+                          {hoveredCountry.capital ? hoveredCountry.capital : 'none'}
+                        </ul>
+                        <div style={{ "fontWeight": "bold" }}>Language/s:</div>
+                        <ul style={{ "textIndent": "-30px" }}>
+                          {hoveredCountry.languages ? Object.keys(hoveredCountry.languages).map((language) => (
+                            <li key={language}>{hoveredCountry.languages[language]}</li>
+                          )) : "none"}
+                        </ul>
+                        <div style={{ "fontWeight": "bold" }}>Currency/currencies:</div>
+                        <ul style={{ "textIndent": "-30px" }}>
+                          {hoveredCountry.currencies ? Object.keys(hoveredCountry.currencies).map((currency) => (
+                            <li key={currency}>{hoveredCountry.currencies[currency].name}, {hoveredCountry.currencies[currency].symbol}</li>
+                          )) : "none"}
+                        </ul>
+                        <div style={{ "fontWeight": "bold" }}>Location on Google Maps
+                          <div style={{ "textIndent": "10px", "fontWeight": "normal" }}>(command+click to open in a new tab):</div></div>
+                        <ul style={{ "textIndent": "-30px" }}>
+                          <Link to={hoveredCountry.maps.googleMaps} target="_blank" onClick={(e) => e.stopPropagation()}>{hoveredCountry.name.common}</Link>
+                        </ul>
                         {/* {console.log(hoveredCountry.languages)} */}
                         {/* <div>Language/s: {hoveredCountry.languages.map((language) => (
                           <div>lala</div>
@@ -158,13 +176,29 @@ const App = () => {
                   >{country.name.common}</div>
                   {hoveredCountry === country && (
                     <div className="tooltip">
-                      <div>Official name: {hoveredCountry.name.official}</div>
-                      <div>Capital: {hoveredCountry.capital ? hoveredCountry.capital : 'none'}</div>
-                      <div>Language/s:</div>
-                      <ul>
-                        {Object.keys(hoveredCountry.languages).map((languageCode) => (
-                          <li key={languageCode}>{hoveredCountry.languages[languageCode]}</li>
-                        ))}
+                      <div style={{ "fontWeight": "bold" }}>Official name:</div>
+                      <ul style={{ "textIndent": "-30px" }}>{hoveredCountry.name.official}
+                      </ul>
+                      <div style={{ "fontWeight": "bold" }}>Capital:</div>
+                      <ul style={{ "textIndent": "-30px" }}>
+                        {hoveredCountry.capital ? hoveredCountry.capital : 'none'}
+                      </ul>
+                      <div style={{ "fontWeight": "bold" }}>Language/s:</div>
+                      <ul style={{ "textIndent": "-30px" }}>
+                        {hoveredCountry.languages ? Object.keys(hoveredCountry.languages).map((language) => (
+                          <li key={language}>{hoveredCountry.languages[language]}</li>
+                        )) : "none"}
+                      </ul>
+                      <div style={{ "fontWeight": "bold" }}>Currency/currencies:</div>
+                      <ul style={{ "textIndent": "-30px" }}>
+                        {hoveredCountry.currencies ? Object.keys(hoveredCountry.currencies).map((currency) => (
+                          <li key={currency}>{hoveredCountry.currencies[currency].name}, {hoveredCountry.currencies[currency].symbol}</li>
+                        )) : "none"}
+                      </ul>
+                      <div style={{ "fontWeight": "bold" }}>Location on Google Maps
+                        <div style={{ "textIndent": "10px", "fontWeight": "normal" }}>(command+click to open in a new tab):</div></div>
+                      <ul style={{ "textIndent": "-30px" }}>
+                        <Link to={hoveredCountry.maps.googleMaps} target="_blank" onClick={(e) => e.stopPropagation()}>{hoveredCountry.name.common}</Link>
                       </ul>
                       {/* {console.log(hoveredCountry.languages)} */}
                       {/* <div>Language/s: {hoveredCountry.languages.map((language) => (
@@ -191,7 +225,7 @@ const App = () => {
 
       </div>
 
-    </div>
+    </div >
   );
 };
 
