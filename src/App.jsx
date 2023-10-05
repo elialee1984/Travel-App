@@ -85,41 +85,45 @@ const App = () => {
 
         {/* <div className="second"> */}
         {/* <div ref={div} className="inside"> */}
-
+        {/* style = {"font-weight": "bold"} */}
         <h1>Elia's Travel App</h1>
-        <span style={{ color: "White" }}>Includes all independent & </span>
+        <span>Includes all independent & </span>
         <span style={{ color: "orange" }}>non-independent </span>
-        <span style={{ color: "white" }}>countries</span>
-        <h2 style={{ textDecorationLine: 'underline' }}>Favorite countries</h2>
-        <h5>Click on flag to remove from favorites.</h5>
-        <ul className="listOfFavorites">
-          {/* {console.log(favorites.sort((a, b) => a.name.common.localeCompare(b.name.common)))} */}
-          {favorites.sort((a, b) => a.name.common.localeCompare(b.name.common)).map((favorite) => (
-            <li key={favorite.name.common} className="country">
-              <div className="flag"
-                onClick={() => removeFromFavorites(favorite)}
-                onMouseEnter={() => handleFlagMouseEnter(favorite)}
-                onMouseLeave={handleFlagMouseLeave}
-              >
-                {<img className="flagImage" src={favorite.flags.svg} alt={favorite.name.common} />}
-                <div className={favorite.independent ? "countryNameIndependent" : "countryNameDependent"}>{favorite.name.common}</div>
-                {hoveredCountry === favorite && hoveredCountry.capital && (
-                  <div className="tooltip">
-                    <div>Capital: {hoveredCountry.capital}</div>
+        <span> countries </span>
+        <span style={{ fontWeight: "bold" }}>(hover over flag to view capital)</span>
+        {favorites.length > 0 && (
+          <div><h2 style={{ textDecorationLine: 'underline' }}>Favorite countries</h2>
+            <h5>Click on flag to remove from favorites.</h5>
+            <ul className="listOfFavorites">
+              {/* {console.log(favorites.sort((a, b) => a.name.common.localeCompare(b.name.common)))} */}
+              {favorites.sort((a, b) => a.name.common.localeCompare(b.name.common)).map((favorite) => (
+                <li key={favorite.name.common} className="country">
+                  <div className="flag"
+                    onClick={() => removeFromFavorites(favorite)}
+                    onMouseEnter={() => handleFlagMouseEnter(favorite)}
+                    onMouseLeave={handleFlagMouseLeave}
+                  >
+                    {<img className="flagImage" src={favorite.flags.svg} alt={favorite.name.common} />}
+                    <div className={favorite.independent ? "countryNameIndependent" : "countryNameDependent"}>{favorite.name.common}</div>
+                    {hoveredCountry === favorite && hoveredCountry.capital && (
+                      <div className="tooltip">
+                        <div>Capital: {hoveredCountry.capital}</div>
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
 
-              {/* <button
+                  {/* <button
                     onClick={() => {
                       removeFromFavorites(favorite)
                     }}
                   >
                     Remove from Favorites
                   </button> */}
-            </li>
-          ))}
-        </ul>
+                </li>
+              ))}
+            </ul>
+          </div>)}
+
 
         {/* </div> */}
         {/* </div> */}

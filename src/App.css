@@ -11,9 +11,9 @@
   list-style-type: none;
   flex-wrap: wrap;
   max-height: 260px;
-  overflow-y: scroll
-  /* overflow: hidden; */
-  /* white-space: nowrap; */
+  overflow-y: scroll;
+  border: 5px solid white;
+  border-radius: 20px;
 }
 
 .listOfCountries {
@@ -22,13 +22,15 @@
   list-style-type: none;
   flex-wrap: wrap;
   max-height: 500px;
-  overflow-y: scroll
-  /* overflow: hidden; */
-  /* white-space: nowrap; */
+  overflow-y: scroll;
+  border: 5px solid white;
+  border-radius: 20px;
 }
+
 .country {
   position: relative;
-  padding: 10px;
+  padding: 5px;
+  margin: 30px 10px 30px 5px;
   /* border: 1px solid red; */
   /* height: 200px */
   /* border-radius: 25px; */
