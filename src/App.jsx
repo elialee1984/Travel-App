@@ -87,7 +87,7 @@ const App = () => {
         {/* <div ref={div} className="inside"> */}
 
         <h1>Elia's Travel App</h1>
-        <span style={{ color: "White" }}>Includes independent & </span>
+        <span style={{ color: "White" }}>Includes all independent & </span>
         <span style={{ color: "orange" }}>non-independent </span>
         <span style={{ color: "white" }}>countries</span>
         <h2 style={{ textDecorationLine: 'underline' }}>Favorite countries</h2>
