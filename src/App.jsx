@@ -110,7 +110,12 @@ const App = () => {
                       <div className="tooltip">
                         <div>Official name: {hoveredCountry.name.official}</div>
                         <div>Capital: {hoveredCountry.capital ? hoveredCountry.capital : 'none'}</div>
-                        {console.log(hoveredCountry.languages)}
+                        <ul>
+                        {Object.keys(hoveredCountry.languages).map((languageCode) => (
+                          <li key={languageCode}>{hoveredCountry.languages[languageCode]}</li>
+                        ))}
+                      </ul>
+                        {/* {console.log(hoveredCountry.languages)} */}
                         {/* <div>Language/s: {hoveredCountry.languages.map((language) => (
                           <div>lala</div>
                         ))}</div> */}
