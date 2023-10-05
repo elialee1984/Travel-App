@@ -128,15 +128,15 @@ const App = () => {
                             <li key={currency}>{hoveredCountry.currencies[currency].name}, {hoveredCountry.currencies[currency].symbol}</li>
                           )) : "none"}
                         </ul>
-                        <div style={{ "fontWeight": "bold" }}>Location on Google Maps
-                          <div style={{ "textIndent": "10px", "fontWeight": "normal" }}>(command+click to open in a new tab):</div></div>
-                        <ul style={{ "textIndent": "-30px" }}>
-                          <Link to={hoveredCountry.maps.googleMaps} target="_blank" onClick={(e) => e.stopPropagation()}>{hoveredCountry.name.common}</Link>
-                        </ul>
-                        {/* {console.log(hoveredCountry.languages)} */}
-                        {/* <div>Language/s: {hoveredCountry.languages.map((language) => (
-                          <div>lala</div>
-                        ))}</div> */}
+                        <div>
+                        <Link to={hoveredCountry.maps.googleMaps}
+                          target="_blank"
+                          onClick={(e) => e.stopPropagation()}
+                          style={{ "textDecoration": 'none', "fontWeight": "bold" }}>
+                          Location on Google Maps
+                          <div>(command+click to open in a new tab)</div>
+                          </Link>
+                      </div>
                       </div>
                     )}
                   </div>
@@ -195,15 +195,15 @@ const App = () => {
                           <li key={currency}>{hoveredCountry.currencies[currency].name}, {hoveredCountry.currencies[currency].symbol}</li>
                         )) : "none"}
                       </ul>
-                      <div style={{ "fontWeight": "bold" }}>Location on Google Maps
-                        <div style={{ "textIndent": "10px", "fontWeight": "normal" }}>(command+click to open in a new tab):</div></div>
-                      <ul style={{ "textIndent": "-30px" }}>
-                        <Link to={hoveredCountry.maps.googleMaps} target="_blank" onClick={(e) => e.stopPropagation()}>{hoveredCountry.name.common}</Link>
-                      </ul>
-                      {/* {console.log(hoveredCountry.languages)} */}
-                      {/* <div>Language/s: {hoveredCountry.languages.map((language) => (
-                          <div>lala</div>
-                        ))}</div> */}
+                      <div>
+                        <Link to={hoveredCountry.maps.googleMaps}
+                          target="_blank"
+                          onClick={(e) => e.stopPropagation()}
+                          style={{ "textDecoration": 'none', "fontWeight": "bold" }}>
+                          Location on Google Maps
+                          <div>(command+click to open in a new tab)</div>
+                          </Link>
+                      </div>
                     </div>
                   )}
                 </div>
