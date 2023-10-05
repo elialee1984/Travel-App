@@ -92,7 +92,8 @@ const App = () => {
         <span> countries </span>
         <span style={{ fontWeight: "bold" }}>(hover over flag to view capital)</span>
         {favorites.length > 0 && (
-          <div><h2 style={{ textDecorationLine: 'underline' }}>Favorite countries</h2>
+          <div>
+            <h2 style={{ textDecorationLine: 'underline' }}>Favorite countries</h2>
             <h5>Click on flag to remove from favorites.</h5>
             <ul className="listOfFavorites">
               {/* {console.log(favorites.sort((a, b) => a.name.common.localeCompare(b.name.common)))} */}
@@ -105,9 +106,14 @@ const App = () => {
                   >
                     {<img className="flagImage" src={favorite.flags.svg} alt={favorite.name.common} />}
                     <div className={favorite.independent ? "countryNameIndependent" : "countryNameDependent"}>{favorite.name.common}</div>
-                    {hoveredCountry === favorite && hoveredCountry.capital && (
+                    {hoveredCountry === favorite && (
                       <div className="tooltip">
-                        <div>Capital: {hoveredCountry.capital}</div>
+                        <div>Official name: {hoveredCountry.name.official}</div>
+                        <div>Capital: {hoveredCountry.capital ? hoveredCountry.capital : 'none'}</div>
+                        {console.log(hoveredCountry.languages)}
+                        {/* <div>Language/s: {hoveredCountry.languages.map((language) => (
+                          <div>lala</div>
+                        ))}</div> */}
                       </div>
                     )}
                   </div>
@@ -145,9 +151,20 @@ const App = () => {
                   {<img className="flagImage" src={country.flags.svg} alt={country.name.common} />}
                   <div className={country.independent ? "countryNameIndependent" : "countryNameDependent"}
                   >{country.name.common}</div>
-                  {hoveredCountry === country && hoveredCountry.capital && (
+                  {hoveredCountry === country && (
                     <div className="tooltip">
-                      <div>Capital: {hoveredCountry.capital}</div>
+                      <div>Official name: {hoveredCountry.name.official}</div>
+                      <div>Capital: {hoveredCountry.capital ? hoveredCountry.capital : 'none'}</div>
+                      <div>Language/s:</div>
+                      <ul>
+                        {Object.keys(hoveredCountry.languages).map((languageCode) => (
+                          <li key={languageCode}>{hoveredCountry.languages[languageCode]}</li>
+                        ))}
+                      </ul>
+                      {/* {console.log(hoveredCountry.languages)} */}
+                      {/* <div>Language/s: {hoveredCountry.languages.map((language) => (
+                          <div>lala</div>
+                        ))}</div> */}
                     </div>
                   )}
                 </div>
