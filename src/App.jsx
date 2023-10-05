@@ -91,7 +91,7 @@ const App = () => {
         <span>Includes all independent & </span>
         <span style={{ color: "orange" }}>non-independent </span>
         <span> countries </span>
-        <span style={{ fontWeight: "bold" }}>(hover over flag to view official name, capital, languages, currencies, and see location on Google Maps)</span>
+        <span style={{ fontWeight: "bold" }}>(hover over flag to view official name, capital, demonym, languages, currencies, and see location on Google Maps)</span>
         {favorites.length > 0 && (
           <div>
             <h2 style={{ textDecorationLine: 'underline' }}>Favorite countries</h2>
@@ -116,6 +116,9 @@ const App = () => {
                         <ul style={{ "textIndent": "-30px" }}>
                           {hoveredCountry.capital ? hoveredCountry.capital : 'none'}
                         </ul>
+                        <div style={{ "fontWeight": "bold" }}>Demonym:</div>
+                        <ul style={{ "textIndent": "-30px" }}>{hoveredCountry.demonyms.eng.m}
+                        </ul>
                         <div style={{ "fontWeight": "bold" }}>Language/s:</div>
                         <ul style={{ "textIndent": "-30px" }}>
                           {hoveredCountry.languages ? Object.keys(hoveredCountry.languages).map((language) => (
@@ -129,14 +132,14 @@ const App = () => {
                           )) : "none"}
                         </ul>
                         <div>
-                        <Link to={hoveredCountry.maps.googleMaps}
-                          target="_blank"
-                          onClick={(e) => e.stopPropagation()}
-                          style={{ "textDecoration": 'none', "fontWeight": "bold" }}>
-                          Location on Google Maps
-                          <div>(command+click to open in a new tab)</div>
+                          <Link to={hoveredCountry.maps.googleMaps}
+                            target="_blank"
+                            onClick={(e) => e.stopPropagation()}
+                            style={{ "textDecoration": 'none', "fontWeight": "bold" }}>
+                            Location on Google Maps
+                            <div>(command+click to open in a new tab)</div>
                           </Link>
-                      </div>
+                        </div>
                       </div>
                     )}
                   </div>
@@ -183,6 +186,9 @@ const App = () => {
                       <ul style={{ "textIndent": "-30px" }}>
                         {hoveredCountry.capital ? hoveredCountry.capital : 'none'}
                       </ul>
+                      <div style={{ "fontWeight": "bold" }}>Demonym:</div>
+                      <ul style={{ "textIndent": "-30px" }}>{hoveredCountry.demonyms.eng.m}
+                      </ul>
                       <div style={{ "fontWeight": "bold" }}>Language/s:</div>
                       <ul style={{ "textIndent": "-30px" }}>
                         {hoveredCountry.languages ? Object.keys(hoveredCountry.languages).map((language) => (
@@ -202,7 +208,7 @@ const App = () => {
                           style={{ "textDecoration": 'none', "fontWeight": "bold" }}>
                           Location on Google Maps
                           <div>(command+click to open in a new tab)</div>
-                          </Link>
+                        </Link>
                       </div>
                     </div>
                   )}
