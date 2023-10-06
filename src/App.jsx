@@ -82,7 +82,7 @@ const App = () => {
                         <ul style={{ "textIndent": "-30px" }}>
                           {hoveredCountry.continents ? hoveredCountry.continents.map((continent) => (
                             <li key={continent}>
-                              <div>{continent}</div>
+                              <div>{continent} {hoveredCountry.subregion ? <span>({hoveredCountry.subregion})</span> : ""}</div>
                             </li>
                           )) : 'none'}
                         </ul>
@@ -155,7 +155,7 @@ const App = () => {
                       <ul style={{ "textIndent": "-30px" }}>
                         {hoveredCountry.continents ? hoveredCountry.continents.map((continent) => (
                           <li key={continent}>
-                            <div>{continent}</div>
+                            <div>{continent} {hoveredCountry.subregion ? <span>({hoveredCountry.subregion})</span> : ""}</div>
                           </li>
                         )) : 'none'}
                       </ul>
