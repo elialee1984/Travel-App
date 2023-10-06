@@ -117,7 +117,8 @@ const App = () => {
                           {hoveredCountry.capital ? hoveredCountry.capital : 'none'}
                         </ul>
                         <div style={{ "fontWeight": "bold" }}>Demonym:</div>
-                        <ul style={{ "textIndent": "-30px" }}>{hoveredCountry.demonyms.eng.m}
+                        <ul style={{ "textIndent": "-30px" }}>
+                          {hoveredCountry.demonyms ? hoveredCountry.demonyms.eng.m : "none"}
                         </ul>
                         <div style={{ "fontWeight": "bold" }}>Language/s:</div>
                         <ul style={{ "textIndent": "-30px" }}>
@@ -187,8 +188,9 @@ const App = () => {
                         {hoveredCountry.capital ? hoveredCountry.capital : 'none'}
                       </ul>
                       <div style={{ "fontWeight": "bold" }}>Demonym:</div>
-                      <ul style={{ "textIndent": "-30px" }}>{hoveredCountry.demonyms.eng.m}
-                      </ul>
+                        <ul style={{ "textIndent": "-30px" }}>
+                          {hoveredCountry.demonyms ? hoveredCountry.demonyms.eng.m : "none"}
+                        </ul>
                       <div style={{ "fontWeight": "bold" }}>Language/s:</div>
                       <ul style={{ "textIndent": "-30px" }}>
                         {hoveredCountry.languages ? Object.keys(hoveredCountry.languages).map((language) => (
