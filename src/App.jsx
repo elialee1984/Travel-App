@@ -1,10 +1,9 @@
-import { useState, useEffect, useLayoutEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import './App.css'
 
 const App = () => {
   const [countries, setCountries] = useState([]);
-  const [territories, setTerritories] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [hoveredCountry, setHoveredCountry] = useState(null);
 
@@ -20,10 +19,7 @@ const App = () => {
         const dependentCountries = sortedData.filter(
           country => !country.independent
         );
-        // setCountries(independentCountries);
         setCountries(sortedData);
-        // console.log(independentCountries);
-        setTerritories(dependentCountries);
       } catch (error) {
         console.error(error);
       }
@@ -40,14 +36,9 @@ const App = () => {
 
   const removeFromFavorites = (favorite) => {
     const index = favorites.indexOf(favorite);
-    // console.log("favorites before splice", favorites);
     if (index !== -1) {
-      // console.log("index", index);
-      // console.log("favorite", favorite);
       favorites.splice(index, 1);
-      // console.log("favoritesTwo", favoritesTwo);
       setFavorites([...favorites]);
-      // console.log("favorites after splice", favorites);
     }
   };
 
@@ -59,34 +50,10 @@ const App = () => {
     setHoveredCountry(null);
   };
 
-  // const div = useRef();
-
-  // useLayoutEffect(() => {
-  //   // console.log(div);
-  //   const divAnimate = div.current.getBoundingClientRect().top;
-  //   console.log(divAnimate);
-  //   const onScroll = () => {
-  //     if (divAnimate < window.scrollY) {
-  //       // console.log("ok");
-  //       div.current.style.position = "fixed";
-  //       div.current.style.top = 0;
-  //       div.current.style.left = 0;
-  //     } else {
-  //       div.current.style.position = "relative";
-  //     }
-  //   };
-  //   window.addEventListener("scroll", onScroll);
-  //   return () => window.removeEventListener("scroll", onScroll);
-  // }, []);
-
-
   return (
     <div className="App">
       <div>
 
-        {/* <div className="second"> */}
-        {/* <div ref={div} className="inside"> */}
-        {/* style = {"fontWeight": "bold"} */}
         <h1>Elia's Travel App</h1>
         <span>Includes all independent & </span>
         <span style={{ color: "orange" }}>non-independent </span>
@@ -97,7 +64,6 @@ const App = () => {
             <h2 style={{ textDecorationLine: 'underline' }}>Favorite countries</h2>
             <h5>Click on flag to remove from favorites.</h5>
             <ul className="listOfFavorites">
-              {/* {console.log(favorites.sort((a, b) => a.name.common.localeCompare(b.name.common)))} */}
               {favorites.sort((a, b) => a.name.common.localeCompare(b.name.common)).map((favorite) => (
                 <li key={favorite.name.common} className="country">
                   <div className="flag"
@@ -157,21 +123,12 @@ const App = () => {
                     )}
                   </div>
 
-                  {/* <button
-                    onClick={() => {
-                      removeFromFavorites(favorite)
-                    }}
-                  >
-                    Remove from Favorites
-                  </button> */}
                 </li>
               ))}
             </ul>
           </div>)}
 
 
-        {/* </div> */}
-        {/* </div> */}
 
         <h2 style={{ textDecorationLine: 'underline' }}>All countries</h2>
         <h5>Click on flag to add to favorites.</h5>
@@ -182,7 +139,6 @@ const App = () => {
               <li key={country.cca2} className="country">
                 <div
                   className="flag"
-                  // title={`Capital: ${country.capital}`}
                   onClick={() => { addToFavorites(country) }}
                   onMouseEnter={() => handleFlagMouseEnter(country)}
                   onMouseLeave={handleFlagMouseLeave}
