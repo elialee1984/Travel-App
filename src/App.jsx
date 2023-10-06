@@ -91,7 +91,7 @@ const App = () => {
         <span>Includes all independent & </span>
         <span style={{ color: "orange" }}>non-independent </span>
         <span> countries </span>
-        <span style={{ fontWeight: "bold" }}>(hover over flag to view official name, capital, demonym, languages, currencies, and see location on Google Maps)</span>
+        <span style={{ fontWeight: "bold" }}>(hover over flag to view official name, population, capital, demonym, languages, currencies, and see location on Google Maps)</span>
         {favorites.length > 0 && (
           <div>
             <h2 style={{ textDecorationLine: 'underline' }}>Favorite countries</h2>
@@ -110,7 +110,7 @@ const App = () => {
                     {hoveredCountry === favorite && (
                       <div className="tooltip">
                         <div style={{ "fontWeight": "bold" }}>Official name:</div>
-                        <ul style={{ "textIndent": "-30px" }}>{hoveredCountry.name.official}
+                        <ul style={{ "textIndent": "-30px" }}>{hoveredCountry.name.official} (Pop.: {hoveredCountry.population.toLocaleString('en-US')})
                         </ul>
                         <div style={{ "fontWeight": "bold" }}>Capital:</div>
                         <ul style={{ "textIndent": "-30px" }}>
@@ -181,16 +181,16 @@ const App = () => {
                   {hoveredCountry === country && (
                     <div className="tooltip">
                       <div style={{ "fontWeight": "bold" }}>Official name:</div>
-                      <ul style={{ "textIndent": "-30px" }}>{hoveredCountry.name.official}
+                      <ul style={{ "textIndent": "-30px" }}>{hoveredCountry.name.official} (Pop.: {hoveredCountry.population.toLocaleString('en-US')})
                       </ul>
                       <div style={{ "fontWeight": "bold" }}>Capital:</div>
                       <ul style={{ "textIndent": "-30px" }}>
                         {hoveredCountry.capital ? hoveredCountry.capital : 'none'}
                       </ul>
                       <div style={{ "fontWeight": "bold" }}>Demonym:</div>
-                        <ul style={{ "textIndent": "-30px" }}>
-                          {hoveredCountry.demonyms ? hoveredCountry.demonyms.eng.m : "none"}
-                        </ul>
+                      <ul style={{ "textIndent": "-30px" }}>
+                        {hoveredCountry.demonyms ? hoveredCountry.demonyms.eng.m : "none"}
+                      </ul>
                       <div style={{ "fontWeight": "bold" }}>Language/s:</div>
                       <ul style={{ "textIndent": "-30px" }}>
                         {hoveredCountry.languages ? Object.keys(hoveredCountry.languages).map((language) => (
