@@ -122,7 +122,11 @@ const App = () => {
                         </ul>
                         <div style={{ "fontWeight": "bold" }}>Capital:</div>
                         <ul style={{ "textIndent": "-30px" }}>
-                          {hoveredCountry.capital ? hoveredCountry.capital : 'none'}
+                          {hoveredCountry.capital ? hoveredCountry.capital.map((capitalo) => (
+                            <li key={capitalo}>
+                              <div>{capitalo}</div>
+                            </li>
+                          )) : 'none'}
                         </ul>
                         <div style={{ "fontWeight": "bold" }}>Demonym:</div>
                         <ul style={{ "textIndent": "-30px" }}>
@@ -192,16 +196,20 @@ const App = () => {
                       <ul style={{ "textIndent": "-30px" }}>{hoveredCountry.name.official} (Pop.: {hoveredCountry.population.toLocaleString('en-US')})
                       </ul>
                       <div style={{ "fontWeight": "bold" }}>Continent/s:</div>
-                        <ul style={{ "textIndent": "-30px" }}>
-                          {hoveredCountry.continents ? hoveredCountry.continents.map((continent) => (
-                            <li key={continent}>
-                              <div>{continent}</div>
-                            </li>
-                          )) : 'none'}
-                        </ul>
+                      <ul style={{ "textIndent": "-30px" }}>
+                        {hoveredCountry.continents ? hoveredCountry.continents.map((continent) => (
+                          <li key={continent}>
+                            <div>{continent}</div>
+                          </li>
+                        )) : 'none'}
+                      </ul>
                       <div style={{ "fontWeight": "bold" }}>Capital:</div>
                       <ul style={{ "textIndent": "-30px" }}>
-                        {hoveredCountry.capital ? hoveredCountry.capital : 'none'}
+                        {hoveredCountry.capital ? hoveredCountry.capital.map((capitalo) => (
+                          <li key={capitalo}>
+                            <div>{capitalo}</div>
+                          </li>
+                        )) : 'none'}
                       </ul>
                       <div style={{ "fontWeight": "bold" }}>Demonym:</div>
                       <ul style={{ "textIndent": "-30px" }}>
