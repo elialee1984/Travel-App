@@ -58,7 +58,7 @@ const App = () => {
         <span>Includes all independent & </span>
         <span style={{ color: "orange" }}>non-independent </span>
         <span> countries </span>
-        <span style={{ fontWeight: "bold" }}>(hover over flag to view official name, population, continent, capital, demonym, languages, currencies, and see location on Google Maps)</span>
+        <span style={{ fontWeight: "bold" }}>(hover over flag to see more country details, including location on Google Maps)</span>
         {favorites.length > 0 && (
           <div>
             <h2 style={{ textDecorationLine: 'underline' }}>Favorite countries</h2>
