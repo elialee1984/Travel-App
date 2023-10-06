@@ -75,37 +75,37 @@ const App = () => {
                     <div className={favorite.independent ? "countryNameIndependent" : "countryNameDependent"}>{favorite.name.common}</div>
                     {hoveredCountry === favorite && (
                       <div className="tooltip">
-                        <div style={{ "fontWeight": "bold" }}>Official name:</div>
-                        <ul style={{ "textIndent": "-30px" }}>{hoveredCountry.name.official} (Pop.: {hoveredCountry.population.toLocaleString('en-US')})
+                        <div style={{ fontWeight: "bold" }}>Official name:</div>
+                        <ul style={{ textIndent: "-30px" }}>{hoveredCountry.name.official} (Pop.: {hoveredCountry.population.toLocaleString('en-US')})
                         </ul>
-                        <div style={{ "fontWeight": "bold" }}>Continent/s:</div>
-                        <ul style={{ "textIndent": "-30px" }}>
+                        <div style={{ fontWeight: "bold" }}>Continent/s:</div>
+                        <ul style={{ textIndent: "-30px" }}>
                           {hoveredCountry.continents ? hoveredCountry.continents.map((continent) => (
                             <li key={continent}>
                               <div>{continent} {hoveredCountry.subregion && hoveredCountry.subregion != continent ? <span>({hoveredCountry.subregion})</span> : ""}</div>
                             </li>
                           )) : 'none'}
                         </ul>
-                        <div style={{ "fontWeight": "bold" }}>Capital:</div>
-                        <ul style={{ "textIndent": "-30px" }}>
+                        <div style={{ fontWeight: "bold" }}>Capital:</div>
+                        <ul style={{ textIndent: "-30px" }}>
                           {hoveredCountry.capital ? hoveredCountry.capital.map((capitalo) => (
                             <li key={capitalo}>
                               <div>{capitalo}</div>
                             </li>
                           )) : 'none'}
                         </ul>
-                        <div style={{ "fontWeight": "bold" }}>Demonym:</div>
-                        <ul style={{ "textIndent": "-30px" }}>
+                        <div style={{ fontWeight: "bold" }}>Demonym:</div>
+                        <ul style={{ textIndent: "-30px" }}>
                           {hoveredCountry.demonyms ? hoveredCountry.demonyms.eng.m : "none"}
                         </ul>
-                        <div style={{ "fontWeight": "bold" }}>Language/s:</div>
-                        <ul style={{ "textIndent": "-30px" }}>
+                        <div style={{ fontWeight: "bold" }}>Language/s:</div>
+                        <ul style={{ textIndent: "-30px" }}>
                           {hoveredCountry.languages ? Object.keys(hoveredCountry.languages).map((language) => (
                             <li key={language}>{hoveredCountry.languages[language]}</li>
                           )) : "none"}
                         </ul>
-                        <div style={{ "fontWeight": "bold" }}>Currency/currencies:</div>
-                        <ul style={{ "textIndent": "-30px" }}>
+                        <div style={{ fontWeight: "bold" }}>Currency/currencies:</div>
+                        <ul style={{ textIndent: "-30px" }}>
                           {hoveredCountry.currencies ? Object.keys(hoveredCountry.currencies).map((currency) => (
                             <li key={currency}>{hoveredCountry.currencies[currency].name}, {hoveredCountry.currencies[currency].symbol}</li>
                           )) : "none"}
@@ -114,7 +114,7 @@ const App = () => {
                           <Link to={hoveredCountry.maps.googleMaps}
                             target="_blank"
                             onClick={(e) => e.stopPropagation()}
-                            style={{ "textDecoration": 'none', "fontWeight": "bold" }}>
+                            style={{ "textDecoration": 'none', fontWeight: "bold" }}>
                             Location on Google Maps
                             <div>(command+click to open in a new tab)</div>
                           </Link>
@@ -148,37 +148,37 @@ const App = () => {
                   >{country.name.common}</div>
                   {hoveredCountry === country && (
                     <div className="tooltip">
-                      <div style={{ "fontWeight": "bold" }}>Official name:</div>
-                      <ul style={{ "textIndent": "-30px" }}>{hoveredCountry.name.official} (Pop.: {hoveredCountry.population.toLocaleString('en-US')})
+                      <div style={{ fontWeight: "bold" }}>Official name:</div>
+                      <ul style={{ textIndent: "-30px" }}>{hoveredCountry.name.official} (Pop.: {hoveredCountry.population.toLocaleString('en-US')})
                       </ul>
-                      <div style={{ "fontWeight": "bold" }}>Continent/s:</div>
-                      <ul style={{ "textIndent": "-30px" }}>
+                      <div style={{ fontWeight: "bold" }}>Continent/s:</div>
+                      <ul style={{ textIndent: "-30px" }}>
                         {hoveredCountry.continents ? hoveredCountry.continents.map((continent) => (
                           <li key={continent}>
                             <div>{continent} {hoveredCountry.subregion && hoveredCountry.subregion != continent ? <span>({hoveredCountry.subregion})</span> : ""}</div>
                           </li>
                         )) : 'none'}
                       </ul>
-                      <div style={{ "fontWeight": "bold" }}>Capital:</div>
-                      <ul style={{ "textIndent": "-30px" }}>
+                      <div style={{ fontWeight: "bold" }}>Capital:</div>
+                      <ul style={{ textIndent: "-30px" }}>
                         {hoveredCountry.capital ? hoveredCountry.capital.map((capitalo) => (
                           <li key={capitalo}>
                             <div>{capitalo}</div>
                           </li>
                         )) : 'none'}
                       </ul>
-                      <div style={{ "fontWeight": "bold" }}>Demonym:</div>
-                      <ul style={{ "textIndent": "-30px" }}>
+                      <div style={{ fontWeight: "bold" }}>Demonym:</div>
+                      <ul style={{ textIndent: "-30px" }}>
                         {hoveredCountry.demonyms ? hoveredCountry.demonyms.eng.m : "none"}
                       </ul>
-                      <div style={{ "fontWeight": "bold" }}>Language/s:</div>
-                      <ul style={{ "textIndent": "-30px" }}>
+                      <div style={{ fontWeight: "bold" }}>Language/s:</div>
+                      <ul style={{ textIndent: "-30px" }}>
                         {hoveredCountry.languages ? Object.keys(hoveredCountry.languages).map((language) => (
                           <li key={language}>{hoveredCountry.languages[language]}</li>
                         )) : "none"}
                       </ul>
-                      <div style={{ "fontWeight": "bold" }}>Currency/currencies:</div>
-                      <ul style={{ "textIndent": "-30px" }}>
+                      <div style={{ fontWeight: "bold" }}>Currency/currencies:</div>
+                      <ul style={{ textIndent: "-30px" }}>
                         {hoveredCountry.currencies ? Object.keys(hoveredCountry.currencies).map((currency) => (
                           <li key={currency}>{hoveredCountry.currencies[currency].name}, {hoveredCountry.currencies[currency].symbol}</li>
                         )) : "none"}
@@ -187,7 +187,7 @@ const App = () => {
                         <Link to={hoveredCountry.maps.googleMaps}
                           target="_blank"
                           onClick={(e) => e.stopPropagation()}
-                          style={{ "textDecoration": 'none', "fontWeight": "bold" }}>
+                          style={{ textDecoration: 'none', fontWeight: "bold" }}>
                           Location on Google Maps
                           <div>(command+click to open in a new tab)</div>
                         </Link>
