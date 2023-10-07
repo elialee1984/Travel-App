@@ -6,44 +6,40 @@
 }
 
 .countries_border_asia {
-  border: 4px solid rgb(204, 0, 0);
-  border-radius: 20px;
+  border: 3px solid rgb(204, 0, 0);
 }
 
 .countries_border_northAmerica {
-  border: 4px solid rgb(65, 105, 225);
-  border-radius: 20px;
+  border: 3px solid rgb(65, 105, 225);
 }
 
 .countries_border_southAmerica {
-  border: 4px solid rgb(34, 139, 34);
-  border-radius: 20px;
+  border: 3px solid rgb(34, 139, 34);
 }
 
 .countries_border_europe {
-  border: 4px solid rgb(255, 215, 0);
-  border-radius: 20px;
+  border: 3px solid rgb(255, 215, 0);
 }
 
 .countries_border_africa {
-  border: 4px solid rgb(139, 69, 19);
-  border-radius: 20px;
+  border: 3px solid rgb(139, 69, 19);
 }
 
 .countries_border_oceania {
-  border: 4px solid rgb(255, 140, 0);
-  border-radius: 20px;
+  border: 3px solid rgb(255, 140, 0);
 }
 
 .countries_border_eurasia {
-  border-width: 4px;
+  border-width: 3px;
   border-style: solid;
   border-image: linear-gradient(to right, rgb(255, 215, 0), rgb(204, 0, 0)) 1;
+  border-radius: 5px;
 }
 
+
+
 .countries_border_antarctica {
-  border: 4px solid rgb(173, 216, 230);
-  border-radius: 20px;
+  border: 3px solid rgb(173, 216, 230);
 }
 
 ul {

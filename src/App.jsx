@@ -72,16 +72,16 @@ const App = () => {
       Oceania: "countries_border_oceania",
       Antarctica: "countries_border_antarctica",
     };
-  
+
     let continent = "";
-  
+
     if (Array.isArray(country.continents) && country.continents.length === 1) {
       const continentName = country.continents[0];
       continent = continentMappings[continentName] || "";
     } else if (Array.isArray(country.continents) && country.continents.length === 2 && country.continents[0] === "Europe") {
       continent = "countries_border_eurasia";
     }
-  
+
     return `flagImage ${continent}`;
   };
 
@@ -90,21 +90,31 @@ const App = () => {
     <div className="App">
       <div>
         <h1>Elia's Travel App</h1>
-        <span>Includes all </span>
-        <span style={{ color: 'turquoise' }}>independent </span>
-        <span>& </span>
-        <span style={{ color: "orange" }}>non-independent </span>
-        <span> countries </span>
-        <span style={{ fontWeight: "bold" }}>(hover over flag for more country details, including location on Google Maps)</span>
-        <div>Border colors:
-          <span className=''>Africa</span>
-          <span>North America</span>
-          <span>South America</span>
-          <span>Antarctica</span>
-          <span>Asia</span>
-          <span>Europe</span>
-          <span>Oceania</span>
-          <span>Asia & Europe</span>
+        <div>
+          <span>Includes all </span>
+          <span style={{ color: 'turquoise' }}>independent </span>
+          <span>& </span>
+          <span style={{ color: "orange" }}>non-independent </span>
+          <span> countries </span>
+          <span style={{ fontWeight: "bold" }}>(hover over flag for more country details, including location on Google Maps)</span>
+        </div>
+        <br />
+        <div>
+          <span className='countries_border_africa' style={{ borderWidth: "2px", borderRadius: '5px', padding: '2px' }}>Africa</span>
+          <span> </span>
+          <span className='countries_border_northAmerica' style={{ borderWidth: "2px", borderRadius: '5px', padding: '2px'  }}>North America</span>
+          <span> </span>
+          <span className='countries_border_southAmerica' style={{ borderWidth: "2px", borderRadius: '5px', padding: '2px'  }}>South America</span>
+          <span> </span>
+          <span className='countries_border_antarctica' style={{ borderWidth: "2px", borderRadius: '5px', padding: '2px'  }}>Antarctica</span>
+          <span> </span>
+          <span className='countries_border_asia' style={{ borderWidth: "2px", borderRadius: '5px', padding: '2px'  }}>Asia</span>
+          <span> </span>
+          <span className='countries_border_europe' style={{ borderWidth: "2px", borderRadius: '5px', padding: '2px'  }}>Europe</span>
+          <span> </span>
+          <span className='countries_border_oceania' style={{ borderWidth: "2px", borderRadius: '5px', padding: '2px'  }}>Oceania</span>
+          <span> </span>
+          <span className='countries_border_eurasia' style={{ borderWidth: "2px", borderRadius: '5px', padding: '2px'  }}>Europe & Asia</span>
         </div>
 
         {favorites.length > 0 && (
