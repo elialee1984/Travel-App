@@ -50,17 +50,21 @@ const App = () => {
     setHoveredCountry(null);
   };
 
+
+
   return (
     <div className="App">
       <div>
-
         <h1>Elia's Travel App</h1>
-        <span>Includes all independent & </span>
+        <span>Includes all </span>
+        <span style={{ color: 'turquoise' }}>independent </span>
+        <span>& </span>
         <span style={{ color: "orange" }}>non-independent </span>
         <span> countries </span>
-        <span style={{ fontWeight: "bold" }}>(hover over flag to see more country details, including location on Google Maps)</span>
+        <span style={{ fontWeight: "bold" }}>(hover over flag for more country details, including location on Google Maps)</span>
+
         {favorites.length > 0 && (
-          <div>
+          <div className='lala'>
             <h2 style={{ textDecorationLine: 'underline' }}>Favorite countries</h2>
             <h5>Click on flag to remove from favorites.</h5>
             <ul className="listOfFavorites">
@@ -79,20 +83,18 @@ const App = () => {
                         <ul style={{ textIndent: "-30px" }}>{hoveredCountry.name.official} (Pop.: {hoveredCountry.population.toLocaleString('en-US')})
                         </ul>
                         <div style={{ fontWeight: "bold" }}>Continent/s:</div>
-                        <ul style={{ textIndent: "-30px" }}>
-                          {hoveredCountry.continents ? hoveredCountry.continents.map((continent) => (
-                            <li key={continent}>
-                              <div>{continent} {hoveredCountry.subregion && hoveredCountry.subregion != continent ? <span>({hoveredCountry.subregion})</span> : ""}</div>
-                            </li>
-                          )) : 'none'}
+                        <ul style={{ textIndent: "-30px" }}> {hoveredCountry.continents ? hoveredCountry.continents.map((continent) => (
+                          <li key={continent}>
+                            <div>{continent} {hoveredCountry.subregion && hoveredCountry.subregion != continent ? <span>({hoveredCountry.subregion})</span> : ""}</div>
+                          </li>
+                        )) : 'none'}
                         </ul>
                         <div style={{ fontWeight: "bold" }}>Capital:</div>
-                        <ul style={{ textIndent: "-30px" }}>
-                          {hoveredCountry.capital ? hoveredCountry.capital.map((capitalo) => (
-                            <li key={capitalo}>
-                              <div>{capitalo}</div>
-                            </li>
-                          )) : 'none'}
+                        <ul style={{ textIndent: "-30px" }}> {hoveredCountry.capital ? hoveredCountry.capital.map((capitalo) => (
+                          <li key={capitalo}>
+                            <div>{capitalo}</div>
+                          </li>
+                        )) : 'none'}
                         </ul>
                         <div style={{ fontWeight: "bold" }}>Demonym:</div>
                         <ul style={{ textIndent: "-30px" }}>
@@ -126,7 +128,10 @@ const App = () => {
                 </li>
               ))}
             </ul>
-          </div>)}
+          </div>
+        )}
+
+
 
 
 
@@ -152,20 +157,18 @@ const App = () => {
                       <ul style={{ textIndent: "-30px" }}>{hoveredCountry.name.official} (Pop.: {hoveredCountry.population.toLocaleString('en-US')})
                       </ul>
                       <div style={{ fontWeight: "bold" }}>Continent/s:</div>
-                      <ul style={{ textIndent: "-30px" }}>
-                        {hoveredCountry.continents ? hoveredCountry.continents.map((continent) => (
-                          <li key={continent}>
-                            <div>{continent} {hoveredCountry.subregion && hoveredCountry.subregion != continent ? <span>({hoveredCountry.subregion})</span> : ""}</div>
-                          </li>
-                        )) : 'none'}
+                      <ul style={{ textIndent: "-30px" }}> {hoveredCountry.continents ? hoveredCountry.continents.map((continent) => (
+                        <li key={continent}>
+                          <div>{continent} {hoveredCountry.subregion && hoveredCountry.subregion != continent ? <span>({hoveredCountry.subregion})</span> : ""}</div>
+                        </li>
+                      )) : 'none'}
                       </ul>
                       <div style={{ fontWeight: "bold" }}>Capital:</div>
-                      <ul style={{ textIndent: "-30px" }}>
-                        {hoveredCountry.capital ? hoveredCountry.capital.map((capitalo) => (
-                          <li key={capitalo}>
-                            <div>{capitalo}</div>
-                          </li>
-                        )) : 'none'}
+                      <ul style={{ textIndent: "-30px" }}> {hoveredCountry.capital ? hoveredCountry.capital.map((capitalo) => (
+                        <li key={capitalo}>
+                          <div>{capitalo}</div>
+                        </li>
+                      )) : 'none'}
                       </ul>
                       <div style={{ fontWeight: "bold" }}>Demonym:</div>
                       <ul style={{ textIndent: "-30px" }}>
@@ -196,14 +199,6 @@ const App = () => {
                   )}
                 </div>
 
-
-                {/* <button
-                  onClick={() => {
-                    addToFavorites(country)
-                  }}
-                >
-                  Add to Favorites
-                </button> */}
               </li>
             ))}
           </ul>
