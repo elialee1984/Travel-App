@@ -113,6 +113,7 @@ const App = () => {
         </div>
         <br />
         <div>
+          <span style={{ fontStyle: 'italic' }}>Click to filter: </span>
           <span
             className={`countries_border_africa ${selectedContinents.includes('Africa') ? 'selected' : ''
               }`}
