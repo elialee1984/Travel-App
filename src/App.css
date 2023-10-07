@@ -1,180 +1,177 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
 }
 
 .countries_border_asia {
-  border: 3px solid rgb(204, 0, 0);
+    border: 3px solid rgb(204, 0, 0);
 }
 
 .countries_border_northAmerica {
-  border: 3px solid rgb(65, 105, 225);
+    border: 3px solid rgb(65, 105, 225);
 }
 
 .countries_border_southAmerica {
-  border: 3px solid rgb(34, 139, 34);
+    border: 3px solid rgb(34, 139, 34);
 }
 
 .countries_border_europe {
-  border: 3px solid rgb(255, 215, 0);
+    border: 3px solid rgb(255, 215, 0);
 }
 
 .countries_border_africa {
-  border: 3px solid rgb(139, 69, 19);
+    border: 3px solid rgb(139, 69, 19);
 }
 
 .countries_border_oceania {
-  border: 3px solid rgb(255, 140, 0);
+    border: 3px solid rgb(255, 140, 0);
 }
 
 .countries_border_eurasia {
-  border-width: 3px;
-  border-style: solid;
-  border-image: linear-gradient(to right, rgb(255, 215, 0), rgb(204, 0, 0)) 1;
-  border-radius: 5px;
+    border-width: 3px;
+    border-style: solid;
+    border-image: linear-gradient(to right, rgb(255, 215, 0), rgb(204, 0, 0)) 1;
+    border-radius: 5px;
 }
 
-
-
 .countries_border_antarctica {
-  border: 3px solid rgb(173, 216, 230);
+    border: 3px solid rgb(173, 216, 230);
 }
 
 ul {
-  list-style-type: none;
+    list-style-type: none;
 }
 
+.selected {
+    color: white;
+    font-weight: bold;
+  }
+
 .listOfFavorites {
-  display: flex;
-  align-items: center;
-  list-style-type: none;
-  flex-wrap: wrap;
-  max-height: 350px;
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    flex-wrap: wrap;
+    max-height: 350px;
   /* padding-bottom: 150px; */
-  overflow-y: scroll;
-  border: 5px solid white;
-  border-radius: 20px;
+    overflow-y: scroll;
+    border: 5px solid white;
+    border-radius: 20px;
+    z-index: 1;
 }
 
 .listOfCountries {
-  display: flex;
-  align-items: center;
-  list-style-type: none;
-  flex-wrap: wrap;
-  max-height: 600px;
-  overflow-y: scroll;
-  border: 5px solid white;
-  border-radius: 20px;
-  width: auto;
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    flex-wrap: wrap;
+    max-height: 600px;
+    overflow-y: scroll;
+    border: 5px solid white;
+    border-radius: 20px;
+    width: auto;
 }
 
 .country {
-  position: relative;
-  padding: 5px;
-  margin: 20px 20px 20px 5px;
+    position: relative;
+    padding: 5px;
+    margin: 20px 20px 20px 5px;
 }
 
 .flag {
-  position: relative;
+    position: relative;
 }
 
 .flagImage {
-  border-radius: 5px;
-  box-shadow: 10px 10px 3px rgb(31, 31, 31);
-  width: 130px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 3px rgb(31, 31, 31);
+    width: 130px;
 }
 
 .countryNameDependent {
-  position: absolute;
-  bottom: 10px;
-  left: 5px;
-  background-color: rgba(0, 0, 0, 0.261);
-  color: rgb(243, 125, 57);
-  text-shadow: -1px -1px 0 #111, 1px -1px 0 #111, -1px 1px 0 #111, 1px 1px 0 #111;
-
-  padding: 5px;
-  font-size: 12px;
-  border-radius: 50px;
+    position: absolute;
+    bottom: 10px;
+    left: 5px;
+    background-color: rgba(0, 0, 0, 0.261);
+    color: rgb(243, 125, 57);
+    text-shadow: -1px -1px 0 #111, 1px -1px 0 #111, -1px 1px 0 #111, 1px 1px 0 #111;
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 50px;
 }
 
 .countryNameIndependent {
-  position: absolute;
-  bottom: 10px;
-  left: 5px;
-  background-color: rgba(0, 0, 0, 0.261);
-  color: turquoise;
-  text-shadow: -1px -1px 0 #111, 1px -1px 0 #111, -1px 1px 0 #111, 1px 1px 0 #111;
-
-  padding: 5px;
-  font-size: 12px;
-  border-radius: 50px;
+    position: absolute;
+    bottom: 10px;
+    left: 5px;
+    background-color: rgba(0, 0, 0, 0.261);
+    color: turquoise;
+    text-shadow: -1px -1px 0 #111, 1px -1px 0 #111, -1px 1px 0 #111, 1px 1px 0 #111;
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 50px;
 }
 
 .tooltip {
-  position: fixed;
-  width: max-content;
-  background-color: rgba(0, 0, 0, 0.716);
-  border: 1px solid #ccc;
-  padding: 3px;
-  z-index: 999;
-  line-height: 100%;
-  font-size: 12px;
-  text-align: left;
+    position: absolute;
+    width: max-content;
+    background-color: rgba(0, 0, 0, 0.716);
+    border: 1px solid #ccc;
+    padding: 3px;
+    z-index: 1000;
+    line-height: 100%;
+    font-size: 12px;
+    text-align: left;
 }
 
-
-
-
 @media (max-width: 600px) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
+    :root {
+        color: #213547;
+        background-color: #ffffff;
+    }
 
-  .country {
-    position: relative;
-    padding: 5px;
-  }
+    .country {
+        position: relative;
+        padding: 5px;
+    }
 
-  .flag {
-    position: relative;
-  }
+    .flag {
+        position: relative;
+    }
 
-  .flagImage {
-    border-radius: 5px;
-    box-shadow: 10px 10px 3px rgb(31, 31, 31);
-    width: 70px;
-  }
+    .flagImage {
+        border-radius: 5px;
+        box-shadow: 10px 10px 3px rgb(31, 31, 31);
+        width: 70px;
+    }
 
-  .countryNameDependent {
-    position: relative;
-    bottom: 6px;
-    left: 5px;
-    background-color: rgba(0, 0, 0, 0.35);
-    color: rgb(243, 125, 57);
-    text-shadow: -1px -1px 0 #111, 1px -1px 0 #111, -1px 1px 0 #111, 1px 1px 0 #111;
+    .countryNameDependent {
+        position: relative;
+        bottom: 6px;
+        left: 5px;
+        background-color: rgba(0, 0, 0, 0.35);
+        color: rgb(243, 125, 57);
+        text-shadow: -1px -1px 0 #111, 1px -1px 0 #111, -1px 1px 0 #111, 1px 1px 0 #111;
+        padding: 5px;
+        font-size: 8px;
+        border-radius: 50px;
+    }
 
-    padding: 5px;
-    font-size: 8px;
-    border-radius: 50px;
-  }
+    .countryNameIndependent {
+        position: relative;
+        bottom: 6px;
+        left: 5px;
+        background-color: rgba(0, 0, 0, 0.35);
+        color: white;
+        text-shadow: -1px -1px 0 #111, 1px -1px 0 #111, -1px 1px 0 #111, 1px 1px 0 #111;
+        padding: 5px;
+        font-size: 8px;
+        border-radius: 50px;
+    }
 
-  .countryNameIndependent {
-    position: relative;
-    bottom: 6px;
-    left: 5px;
-    background-color: rgba(0, 0, 0, 0.35);
-    color: white;
-    text-shadow: -1px -1px 0 #111, 1px -1px 0 #111, -1px 1px 0 #111, 1px 1px 0 #111;
-
-    padding: 5px;
-    font-size: 8px;
-    border-radius: 50px;
-  }
-
-  .tooltip {
-    position: absolute;
-  }
+    .tooltip {
+        position: absolute;
+    }
 }

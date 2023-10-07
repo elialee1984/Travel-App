@@ -6,6 +6,9 @@ const App = () => {
   const [countries, setCountries] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [hoveredCountry, setHoveredCountry] = useState(null);
+  const [selectedContinents, setSelectedContinents] = useState([]);
+
+
 
   useEffect(() => {
     const getCountries = async () => {
@@ -86,6 +89,16 @@ const App = () => {
   };
 
 
+  const handleContinentClick = (continentName) => {
+    if (selectedContinents.includes(continentName)) {
+      setSelectedContinents(selectedContinents.filter((continent) => continent !== continentName));
+    } else {
+      setSelectedContinents([...selectedContinents, continentName]);
+    }
+  };
+
+
+
   return (
     <div className="App">
       <div>
@@ -100,21 +113,124 @@ const App = () => {
         </div>
         <br />
         <div>
-          <span className='countries_border_africa' style={{ borderWidth: "2px", borderRadius: '5px', padding: '2px' }}>Africa</span>
+          <span
+            className={`countries_border_africa ${selectedContinents.includes('Africa') ? 'selected' : ''
+              }`}
+            onClick={() => handleContinentClick('Africa')}
+            style={{
+              borderWidth: '2px',
+              borderRadius: '5px',
+              padding: '2px',
+              cursor: 'pointer',
+              backgroundColor: selectedContinents.includes('Africa')
+                ? 'grey'
+                : 'transparent',
+            }}
+          >
+            Africa
+          </span>
           <span> </span>
-          <span className='countries_border_northAmerica' style={{ borderWidth: "2px", borderRadius: '5px', padding: '2px'  }}>North America</span>
+          <span
+            className={`countries_border_northAmerica ${selectedContinents.includes('North America') ? 'selected' : ''
+              }`}
+            onClick={() => handleContinentClick('North America')}
+            style={{
+              borderWidth: '2px',
+              borderRadius: '5px',
+              padding: '2px',
+              cursor: 'pointer',
+              backgroundColor: selectedContinents.includes('North America')
+                ? 'grey'
+                : 'transparent',
+            }}
+          >
+            North America
+          </span>
           <span> </span>
-          <span className='countries_border_southAmerica' style={{ borderWidth: "2px", borderRadius: '5px', padding: '2px'  }}>South America</span>
+          <span
+            className={`countries_border_southAmerica ${selectedContinents.includes('South America') ? 'selected' : ''
+              }`}
+            onClick={() => handleContinentClick('South America')}
+            style={{
+              borderWidth: '2px',
+              borderRadius: '5px',
+              padding: '2px',
+              cursor: 'pointer',
+              backgroundColor: selectedContinents.includes('South America')
+                ? 'grey'
+                : 'transparent',
+            }}
+          >
+            South America
+          </span>
           <span> </span>
-          <span className='countries_border_antarctica' style={{ borderWidth: "2px", borderRadius: '5px', padding: '2px'  }}>Antarctica</span>
+          <span
+            className={`countries_border_antarctica ${selectedContinents.includes('Antarctica') ? 'selected' : ''
+              }`}
+            onClick={() => handleContinentClick('Antarctica')}
+            style={{
+              borderWidth: '2px',
+              borderRadius: '5px',
+              padding: '2px',
+              cursor: 'pointer',
+              backgroundColor: selectedContinents.includes('Antarctica')
+                ? 'grey'
+                : 'transparent',
+            }}
+          >
+            Antarctica
+          </span>
           <span> </span>
-          <span className='countries_border_asia' style={{ borderWidth: "2px", borderRadius: '5px', padding: '2px'  }}>Asia</span>
+          <span
+            className={`countries_border_asia ${selectedContinents.includes('Asia') ? 'selected' : ''
+              }`}
+            onClick={() => handleContinentClick('Asia')}
+            style={{
+              borderWidth: '2px',
+              borderRadius: '5px',
+              padding: '2px',
+              cursor: 'pointer',
+              backgroundColor: selectedContinents.includes('Asia')
+                ? 'grey'
+                : 'transparent',
+            }}
+          >
+            Asia
+          </span>
           <span> </span>
-          <span className='countries_border_europe' style={{ borderWidth: "2px", borderRadius: '5px', padding: '2px'  }}>Europe</span>
+          <span
+            className={`countries_border_europe ${selectedContinents.includes('Europe') ? 'selected' : ''
+              }`}
+            onClick={() => handleContinentClick('Europe')}
+            style={{
+              borderWidth: '2px',
+              borderRadius: '5px',
+              padding: '2px',
+              cursor: 'pointer',
+              backgroundColor: selectedContinents.includes('Europe')
+                ? 'grey'
+                : 'transparent',
+            }}
+          >
+            Europe
+          </span>
           <span> </span>
-          <span className='countries_border_oceania' style={{ borderWidth: "2px", borderRadius: '5px', padding: '2px'  }}>Oceania</span>
-          <span> </span>
-          <span className='countries_border_eurasia' style={{ borderWidth: "2px", borderRadius: '5px', padding: '2px'  }}>Europe & Asia</span>
+          <span
+            className={`countries_border_oceania ${selectedContinents.includes('Oceania') ? 'selected' : ''
+              }`}
+            onClick={() => handleContinentClick('Oceania')}
+            style={{
+              borderWidth: '2px',
+              borderRadius: '5px',
+              padding: '2px',
+              cursor: 'pointer',
+              backgroundColor: selectedContinents.includes('Oceania')
+                ? 'grey'
+                : 'transparent',
+            }}
+          >
+            Oceania
+          </span>
         </div>
 
         {favorites.length > 0 && (
@@ -122,65 +238,71 @@ const App = () => {
             <h2 style={{ textDecorationLine: 'underline' }}>Favorite countries</h2>
             <h5>Click on flag to remove from favorites.</h5>
             <ul className="listOfFavorites">
-              {favorites.sort((a, b) => a.name.common.localeCompare(b.name.common)).map((favorite) => (
-                <li key={favorite.name.common} className="country">
-                  <div className="flag"
-                    onClick={() => { removeFromFavorites(favorite); addToAllCountries(favorite) }}
-                    onMouseEnter={() => handleFlagMouseEnter(favorite)}
-                    onMouseLeave={handleFlagMouseLeave}
-                  >
-                    {<img className={flagsBorders(favorite)} src={favorite.flags.svg} alt={favorite.name.common} />}
-                    <div className={favorite.independent ? "countryNameIndependent" : "countryNameDependent"}>{favorite.name.common}</div>
-                    {hoveredCountry === favorite && (
-                      <div className="tooltip">
-                        <div style={{ fontWeight: "bold" }}>Official name:</div>
-                        <ul style={{ textIndent: "-30px" }}>{hoveredCountry.name.official} (Pop.: {hoveredCountry.population.toLocaleString('en-US')})
-                        </ul>
-                        <div style={{ fontWeight: "bold" }}>Continent/s:</div>
-                        <ul style={{ textIndent: "-30px" }}> {hoveredCountry.continents ? hoveredCountry.continents.map((continent) => (
-                          <li key={continent}>
-                            <div>{continent} {hoveredCountry.subregion && hoveredCountry.subregion != continent ? <span>({hoveredCountry.subregion})</span> : ""}</div>
-                          </li>
-                        )) : 'none'}
-                        </ul>
-                        <div style={{ fontWeight: "bold" }}>Capital:</div>
-                        <ul style={{ textIndent: "-30px" }}> {hoveredCountry.capital ? hoveredCountry.capital.map((capitalo) => (
-                          <li key={capitalo}>
-                            <div>{capitalo}</div>
-                          </li>
-                        )) : 'none'}
-                        </ul>
-                        <div style={{ fontWeight: "bold" }}>Demonym:</div>
-                        <ul style={{ textIndent: "-30px" }}>
-                          {hoveredCountry.demonyms ? hoveredCountry.demonyms.eng.m : "none"}
-                        </ul>
-                        <div style={{ fontWeight: "bold" }}>Language/s:</div>
-                        <ul style={{ textIndent: "-30px" }}>
-                          {hoveredCountry.languages ? Object.keys(hoveredCountry.languages).map((language) => (
-                            <li key={language}>{hoveredCountry.languages[language]}</li>
-                          )) : "none"}
-                        </ul>
-                        <div style={{ fontWeight: "bold" }}>Currency/currencies:</div>
-                        <ul style={{ textIndent: "-30px" }}>
-                          {hoveredCountry.currencies ? Object.keys(hoveredCountry.currencies).map((currency) => (
-                            <li key={currency}>{hoveredCountry.currencies[currency].name}, {hoveredCountry.currencies[currency].symbol}</li>
-                          )) : "none"}
-                        </ul>
-                        <div>
-                          <Link to={hoveredCountry.maps.googleMaps}
-                            target="_blank"
-                            onClick={(e) => e.stopPropagation()}
-                            style={{ "textDecoration": 'none', fontWeight: "bold" }}>
-                            Location on Google Maps
-                            <div>(command+click to open in a new tab)</div>
-                          </Link>
+              {favorites
+                .filter((favorite) => {
+                  if (selectedContinents.length === 0) return true;
+                  return favorite.continents.some((continent) => selectedContinents.includes(continent));
+                })
+                .sort((a, b) => a.name.common.localeCompare(b.name.common))
+                .map((favorite) => (
+                  <li key={favorite.name.common} className="country">
+                    <div className="flag"
+                      onClick={() => { removeFromFavorites(favorite); addToAllCountries(favorite) }}
+                      onMouseEnter={() => handleFlagMouseEnter(favorite)}
+                      onMouseLeave={handleFlagMouseLeave}
+                    >
+                      {<img className={flagsBorders(favorite)} src={favorite.flags.svg} alt={favorite.name.common} />}
+                      <div className={favorite.independent ? "countryNameIndependent" : "countryNameDependent"}>{favorite.name.common}</div>
+                      {hoveredCountry === favorite && (
+                        <div className="tooltip">
+                          <div style={{ fontWeight: "bold" }}>Official name:</div>
+                          <ul style={{ textIndent: "-30px" }}>{hoveredCountry.name.official} (Pop.: {hoveredCountry.population.toLocaleString('en-US')})
+                          </ul>
+                          <div style={{ fontWeight: "bold" }}>Continent/s:</div>
+                          <ul style={{ textIndent: "-30px" }}> {hoveredCountry.continents ? hoveredCountry.continents.map((continent) => (
+                            <li key={continent}>
+                              <div>{continent} {hoveredCountry.subregion && hoveredCountry.subregion != continent ? <span>({hoveredCountry.subregion})</span> : ""}</div>
+                            </li>
+                          )) : 'none'}
+                          </ul>
+                          <div style={{ fontWeight: "bold" }}>Capital:</div>
+                          <ul style={{ textIndent: "-30px" }}> {hoveredCountry.capital ? hoveredCountry.capital.map((capitalo) => (
+                            <li key={capitalo}>
+                              <div>{capitalo}</div>
+                            </li>
+                          )) : 'none'}
+                          </ul>
+                          <div style={{ fontWeight: "bold" }}>Demonym:</div>
+                          <ul style={{ textIndent: "-30px" }}>
+                            {hoveredCountry.demonyms ? hoveredCountry.demonyms.eng.m : "none"}
+                          </ul>
+                          <div style={{ fontWeight: "bold" }}>Language/s:</div>
+                          <ul style={{ textIndent: "-30px" }}>
+                            {hoveredCountry.languages ? Object.keys(hoveredCountry.languages).map((language) => (
+                              <li key={language}>{hoveredCountry.languages[language]}</li>
+                            )) : "none"}
+                          </ul>
+                          <div style={{ fontWeight: "bold" }}>Currency/currencies:</div>
+                          <ul style={{ textIndent: "-30px" }}>
+                            {hoveredCountry.currencies ? Object.keys(hoveredCountry.currencies).map((currency) => (
+                              <li key={currency}>{hoveredCountry.currencies[currency].name}, {hoveredCountry.currencies[currency].symbol}</li>
+                            )) : "none"}
+                          </ul>
+                          <div>
+                            <Link to={hoveredCountry.maps.googleMaps}
+                              target="_blank"
+                              onClick={(e) => e.stopPropagation()}
+                              style={{ "textDecoration": 'none', fontWeight: "bold" }}>
+                              Location on Google Maps
+                              <div>(command+click to open in a new tab)</div>
+                            </Link>
+                          </div>
                         </div>
-                      </div>
-                    )}
-                  </div>
+                      )}
+                    </div>
 
-                </li>
-              ))}
+                  </li>
+                ))}
             </ul>
           </div>
         )}
@@ -190,69 +312,73 @@ const App = () => {
         <h5>Click on flag to add to favorites.</h5>
 
         <ul className="listOfCountries">
-          {countries.map((country) => (
-            <li key={country.cca2} className="country">
-              <div
-                className="flag"
-                onClick={() => { addToFavorites(country); removeFromAllCountries(country) }}
-                onMouseEnter={() => handleFlagMouseEnter(country)}
-                onMouseLeave={handleFlagMouseLeave}
-              >
-                {<img className={flagsBorders(country)} src={country.flags.svg} alt={country.name.common} />}
-                {/* {Object.keys(country.continents).length > 1 ? console.log(country.name.common, country.continents) : ""} */}
-                <div className={country.independent ? "countryNameIndependent" : "countryNameDependent"}>
-                  {country.name.common}
-                </div>
-                {hoveredCountry === country && (
-                  <div className="tooltip">
-                    <div style={{ fontWeight: "bold" }}>Official name:</div>
-                    <ul style={{ textIndent: "-30px" }}>{hoveredCountry.name.official} (Pop.: {hoveredCountry.population.toLocaleString('en-US')})
-                    </ul>
-                    <div style={{ fontWeight: "bold" }}>Continent/s:</div>
-                    <ul style={{ textIndent: "-30px" }}> {hoveredCountry.continents ? hoveredCountry.continents.map((continent) => (
-                      <li key={continent}>
-                        <div>{continent} {hoveredCountry.subregion && hoveredCountry.subregion != continent ? <span>({hoveredCountry.subregion})</span> : ""}</div>
-                      </li>
-                    )) : 'none'}
-                    </ul>
-                    <div style={{ fontWeight: "bold" }}>Capital:</div>
-                    <ul style={{ textIndent: "-30px" }}> {hoveredCountry.capital ? hoveredCountry.capital.map((capitalo) => (
-                      <li key={capitalo}>
-                        <div>{capitalo}</div>
-                      </li>
-                    )) : 'none'}
-                    </ul>
-                    <div style={{ fontWeight: "bold" }}>Demonym:</div>
-                    <ul style={{ textIndent: "-30px" }}>
-                      {hoveredCountry.demonyms ? hoveredCountry.demonyms.eng.m : "none"}
-                    </ul>
-                    <div style={{ fontWeight: "bold" }}>Language/s:</div>
-                    <ul style={{ textIndent: "-30px" }}>
-                      {hoveredCountry.languages ? Object.keys(hoveredCountry.languages).map((language) => (
-                        <li key={language}>{hoveredCountry.languages[language]}</li>
-                      )) : "none"}
-                    </ul>
-                    <div style={{ fontWeight: "bold" }}>Currency/currencies:</div>
-                    <ul style={{ textIndent: "-30px" }}>
-                      {hoveredCountry.currencies ? Object.keys(hoveredCountry.currencies).map((currency) => (
-                        <li key={currency}>{hoveredCountry.currencies[currency].name}, {hoveredCountry.currencies[currency].symbol}</li>
-                      )) : "none"}
-                    </ul>
-                    <div>
-                      <Link to={hoveredCountry.maps.googleMaps}
-                        target="_blank"
-                        onClick={(e) => e.stopPropagation()}
-                        style={{ textDecoration: 'none', fontWeight: "bold" }}>
-                        Location on Google Maps
-                        <div>(command+click to open in a new tab)</div>
-                      </Link>
-                    </div>
+          {countries
+            .filter((country) => {
+              if (selectedContinents.length === 0) return true;
+              return country.continents.some((continent) => selectedContinents.includes(continent));
+            })
+            .map((country) => (
+              <li key={country.cca2} className="country">
+                <div
+                  className="flag"
+                  onClick={() => { addToFavorites(country); removeFromAllCountries(country) }}
+                  onMouseEnter={() => handleFlagMouseEnter(country)}
+                  onMouseLeave={handleFlagMouseLeave}
+                >
+                  {<img className={flagsBorders(country)} src={country.flags.svg} alt={country.name.common} />}
+                  <div className={country.independent ? "countryNameIndependent" : "countryNameDependent"}>
+                    {country.name.common}
                   </div>
-                )}
-              </div>
+                  {hoveredCountry === country && (
+                    <div className="tooltip">
+                      <div style={{ fontWeight: "bold" }}>Official name:</div>
+                      <ul style={{ textIndent: "-30px" }}>{hoveredCountry.name.official} (Pop.: {hoveredCountry.population.toLocaleString('en-US')})
+                      </ul>
+                      <div style={{ fontWeight: "bold" }}>Continent/s:</div>
+                      <ul style={{ textIndent: "-30px" }}> {hoveredCountry.continents ? hoveredCountry.continents.map((continent) => (
+                        <li key={continent}>
+                          <div>{continent} {hoveredCountry.subregion && hoveredCountry.subregion != continent ? <span>({hoveredCountry.subregion})</span> : ""}</div>
+                        </li>
+                      )) : 'none'}
+                      </ul>
+                      <div style={{ fontWeight: "bold" }}>Capital:</div>
+                      <ul style={{ textIndent: "-30px" }}> {hoveredCountry.capital ? hoveredCountry.capital.map((capitalo) => (
+                        <li key={capitalo}>
+                          <div>{capitalo}</div>
+                        </li>
+                      )) : 'none'}
+                      </ul>
+                      <div style={{ fontWeight: "bold" }}>Demonym:</div>
+                      <ul style={{ textIndent: "-30px" }}>
+                        {hoveredCountry.demonyms ? hoveredCountry.demonyms.eng.m : "none"}
+                      </ul>
+                      <div style={{ fontWeight: "bold" }}>Language/s:</div>
+                      <ul style={{ textIndent: "-30px" }}>
+                        {hoveredCountry.languages ? Object.keys(hoveredCountry.languages).map((language) => (
+                          <li key={language}>{hoveredCountry.languages[language]}</li>
+                        )) : "none"}
+                      </ul>
+                      <div style={{ fontWeight: "bold" }}>Currency/currencies:</div>
+                      <ul style={{ textIndent: "-30px" }}>
+                        {hoveredCountry.currencies ? Object.keys(hoveredCountry.currencies).map((currency) => (
+                          <li key={currency}>{hoveredCountry.currencies[currency].name}, {hoveredCountry.currencies[currency].symbol}</li>
+                        )) : "none"}
+                      </ul>
+                      <div>
+                        <Link to={hoveredCountry.maps.googleMaps}
+                          target="_blank"
+                          onClick={(e) => e.stopPropagation()}
+                          style={{ textDecoration: 'none', fontWeight: "bold" }}>
+                          Location on Google Maps
+                          <div>(command+click to open in a new tab)</div>
+                        </Link>
+                      </div>
+                    </div>
+                  )}
+                </div>
 
-            </li>
-          ))}
+              </li>
+            ))}
         </ul>
       </div>
     </div>
