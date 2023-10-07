@@ -13,12 +13,12 @@ const App = () => {
         const response = await fetch("https://restcountries.com/v3.1/all");
         const data = await response.json();
         const sortedData = data.sort((a, b) => a.name.common.localeCompare(b.name.common))
-        const independentCountries = sortedData.filter(
-          country => country.independent
-        );
-        const dependentCountries = sortedData.filter(
-          country => !country.independent
-        );
+        // const independentCountries = sortedData.filter(
+        //   country => country.independent
+        // );
+        // const dependentCountries = sortedData.filter(
+        //   country => !country.independent
+        // );
         setCountries(sortedData);
       } catch (error) {
         console.error(error);
@@ -34,11 +34,23 @@ const App = () => {
     }
   };
 
+  const addToAllCountries = (country) => {
+      setCountries([...countries, country].sort((a, b) => a.name.common.localeCompare(b.name.common)));
+  };
+
   const removeFromFavorites = (favorite) => {
     const index = favorites.indexOf(favorite);
     if (index !== -1) {
       favorites.splice(index, 1);
       setFavorites([...favorites]);
+    }
+  };
+
+  const removeFromAllCountries = (country) => {
+    const index = countries.indexOf(country);
+    if (index !== -1) {
+      countries.splice(index, 1);
+      setCountries([...countries]);
     }
   };
 
@@ -71,7 +83,7 @@ const App = () => {
               {favorites.sort((a, b) => a.name.common.localeCompare(b.name.common)).map((favorite) => (
                 <li key={favorite.name.common} className="country">
                   <div className="flag"
-                    onClick={() => removeFromFavorites(favorite)}
+                    onClick={() => {removeFromFavorites(favorite); addToAllCountries(favorite)}}
                     onMouseEnter={() => handleFlagMouseEnter(favorite)}
                     onMouseLeave={handleFlagMouseLeave}
                   >
@@ -144,7 +156,7 @@ const App = () => {
               <li key={country.cca2} className="country">
                 <div
                   className="flag"
-                  onClick={() => { addToFavorites(country) }}
+                  onClick={() => { addToFavorites(country); removeFromAllCountries(country) }}
                   onMouseEnter={() => handleFlagMouseEnter(country)}
                   onMouseLeave={handleFlagMouseLeave}
                 >
