@@ -7,6 +7,8 @@ const App = () => {
   const [favorites, setFavorites] = useState([]);
   const [hoveredCountry, setHoveredCountry] = useState(null);
   const [selectedContinents, setSelectedContinents] = useState([]);
+  const [showDependent, setShowDependent] = useState(true);
+  const [showIndependent, setShowIndependent] = useState(true);
 
 
 
@@ -113,7 +115,27 @@ const App = () => {
         </div>
         <br />
         <div>
-          <span style={{ fontStyle: 'italic' }}>Click to filter: </span>
+          <label>
+            <input
+              type="checkbox"
+              checked={showDependent}
+              onChange={() => setShowDependent(!showDependent)}
+            />
+            Show Non-Independent Countries
+          </label>
+        </div>
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              checked={showIndependent}
+              onChange={() => setShowIndependent(!showIndependent)}
+            />
+            Show Independent Countries
+          </label>
+        </div>
+        <div className='continentFilter'>
+          <span style={{ fontStyle: 'italic' }}>Filter by continent: </span>
           <span
             className={`countries_border_africa ${selectedContinents.includes('Africa') ? 'selected' : ''
               }`}
@@ -234,6 +256,9 @@ const App = () => {
           </span>
         </div>
 
+
+
+
         {favorites.length > 0 && (
           <div>
             <h2 style={{ textDecorationLine: 'underline' }}>Favorite countries</h2>
@@ -242,7 +267,15 @@ const App = () => {
               {favorites
                 .filter((favorite) => {
                   if (selectedContinents.length === 0) return true;
-                  return favorite.continents.some((continent) => selectedContinents.includes(continent));
+                  return favorite.continents.some((continent) =>
+                    selectedContinents.includes(continent)
+                  );
+                })
+                .filter((favorite) => {
+                  return (
+                    (showIndependent && favorite.independent) ||
+                    (showDependent && !favorite.independent)
+                  );
                 })
                 .sort((a, b) => a.name.common.localeCompare(b.name.common))
                 .map((favorite) => (
@@ -316,7 +349,15 @@ const App = () => {
           {countries
             .filter((country) => {
               if (selectedContinents.length === 0) return true;
-              return country.continents.some((continent) => selectedContinents.includes(continent));
+              return country.continents.some((continent) =>
+                selectedContinents.includes(continent)
+              );
+            })
+            .filter((country) => {
+              return (
+                (showIndependent && country.independent) ||
+                (showDependent && !country.independent)
+              );
             })
             .map((country) => (
               <li key={country.cca2} className="country">
