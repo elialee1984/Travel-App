@@ -104,7 +104,7 @@ const App = () => {
   return (
     <div className="App">
       <div>
-        <h1>Elia's Travel App</h1>
+        <h1>Elia's Geography App</h1>
         <div>
           <span>Includes all </span>
           <span style={{ color: 'turquoise' }}>independent </span>
@@ -121,7 +121,7 @@ const App = () => {
               checked={showDependent}
               onChange={() => setShowDependent(!showDependent)}
             />
-            Show Non-Independent Countries
+            Show dependent territories (regions that fall under the sovereignity of another country)
           </label>
         </div>
         <div>
@@ -131,7 +131,7 @@ const App = () => {
               checked={showIndependent}
               onChange={() => setShowIndependent(!showIndependent)}
             />
-            Show Independent Countries
+            Show independent sovereign countries
           </label>
         </div>
         <div className='continentFilter'>
