@@ -121,7 +121,7 @@ const App = () => {
               checked={showIndependent}
               onChange={() => setShowIndependent(!showIndependent)}
             />
-            Show independent sovereign countries
+            Show <span style={{ color: 'turquoise' }}>independent </span>sovereign countries
           </label>
         </div>
         <div>
@@ -131,7 +131,7 @@ const App = () => {
               checked={showDependent}
               onChange={() => setShowDependent(!showDependent)}
             />
-            Show dependent territories (regions that fall under the sovereignity of another country)
+            Show <span style={{ color: "orange" }}>dependent </span>territories (regions that fall under the sovereignity of another country)
           </label>
         </div>
         <div className='continentFilter'>
