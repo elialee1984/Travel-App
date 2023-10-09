@@ -111,7 +111,7 @@ const App = () => {
           <span>& </span>
           <span style={{ color: "orange" }}>non-independent </span>
           <span> countries </span>
-          <span style={{ fontWeight: "bold" }}>(hover over flag for more country details, including location on Google Maps)</span>
+          <div style={{ fontWeight: "bold" }}>Hover over flag for more country details, including location on Google Maps.</div>
         </div>
         <br />
         <div>
