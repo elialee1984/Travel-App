@@ -118,20 +118,20 @@ const App = () => {
           <label>
             <input
               type="checkbox"
-              checked={showDependent}
-              onChange={() => setShowDependent(!showDependent)}
+              checked={showIndependent}
+              onChange={() => setShowIndependent(!showIndependent)}
             />
-            Show dependent territories (regions that fall under the sovereignity of another country)
+            Show independent sovereign countries
           </label>
         </div>
         <div>
           <label>
             <input
               type="checkbox"
-              checked={showIndependent}
-              onChange={() => setShowIndependent(!showIndependent)}
+              checked={showDependent}
+              onChange={() => setShowDependent(!showDependent)}
             />
-            Show independent sovereign countries
+            Show dependent territories (regions that fall under the sovereignity of another country)
           </label>
         </div>
         <div className='continentFilter'>
