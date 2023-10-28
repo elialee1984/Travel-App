@@ -105,6 +105,7 @@ const App = () => {
     <div className="App">
       <div>
         <h1>Elia's Geography App</h1>
+        <h6 style={{color: "red", fontStyle: "italic"}}>[Best viewd in Dark Mode!]</h6>
         <div>
           <span>Includes all </span>
           <span style={{ color: 'turquoise' }}>independent </span>
